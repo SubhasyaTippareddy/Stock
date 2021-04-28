@@ -1,0 +1,106 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Grains</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+ 
+</head>
+<body class="hold-transition sidebar-mini">
+	
+	<div class="wrapper">
+		
+		<!-- Navbar -->
+		
+		<!-- /.navbar -->
+		
+		<aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+                <a href="/" class="brand-link"><span class="brand-text font-weight-light">Home</span></a>
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                          <li class="nav-item">
+                            <a href="/addProduct" class="nav-link">
+                              <i class="nav-icon far fa-circle text-info"></i>
+                              <p>Add Product</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="/editProduct" class="nav-link">
+                              <i class="nav-icon far fa-circle text-info"></i>
+                              <p class="text">Edit Product</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="/deleteProduct" class="nav-link">
+                              <i class="nav-icon far fa-circle text-info"></i>
+                              <p class="text">Delete Product</p>
+                            </a>
+                          </li>
+                          
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+		
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			
+			<section style="background-color:#1C989F;"class="content-header">
+				<h1 style=" color:cornsilk; ">Grains Inventory</h1>
+			</section>
+			<br>
+			<section class="content">
+                <div class="card" style="width: 50%; margin-left: 400px;">
+                    <div class="card-body">
+          <h3>PID: <%= num %></h3>           
+          <hr>
+          <h3>Enter the fields that are to be updated</h3>
+          <form action="/editpartData?id=<%= num %>" method="POST">
+                    <label for="pname">Name</label><br>
+                    <input type="text" class="form-control" id="pname" placeholder="Enter Product name" name="pname"><br>
+                  
+                    <label for=quantity>Quantity</label><br>
+                    <input type="number" class="form-control" id="quantity" placeholder="Enter available quantity" name="quantity"><br>
+          
+                          
+                    <label for="price">Price</label><br>
+                    <input type="number" class="form-control" id="price" placeholder="Enter the price" name="price"><br>
+                    <label>Choose a category:</label><br>
+                    <select class="form-control" name="category">
+                      <option value="">Select any</option>
+                      <option value="cereals">Cereals</option>
+                      <option value="pseudocereals">Pseudo-cereals</option>
+                      <option value="pulses">Pulses</option>
+                      <option value="oilseeds">Oilseeds</option>
+                    </select>
+                    <br>
+                    <label>Refined/Unrefined:</label><br>
+                    <input type="radio" name="method" value="refined">
+                    Refined &nbsp; &nbsp;
+                    <input type="radio" name="method" value="unrefined">
+                    Unrefined  
+                    <input  style=" color: cornsilk; margin-left: 300px; height: 35px; width: 200px; background-color: #1C989F;" class="btn btn-info btn-sm" type="submit">
+                  </form>
+                    </div>
+                  </div>
+                  
+              </div>    
+			</section>
+		</div>
+		
+	</div>
+</body>
+</html>
