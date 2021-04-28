@@ -6,6 +6,7 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'hospitalManagement';
 let db;
 let col;
+//database connection
 MongoC.connect(url,{useUnifiedTopology:true},(err,client)=>{
   if(!err) {
     db=client.db('Inventory');
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
-
+//Get requests
 app.get('/',(req,res)=>{
   col.find({isavailable:true}).toArray((err,result)=>{
     if(err) console.log(err);
@@ -37,6 +38,7 @@ app.get('/deleteProduct',(req,res)=>{
   res.render('delete_product.ejs');
 })
 
+//Add product form
 app.post('/addData', (req,res)=>{
   var query=req.body
   if(query.pid!=""){
@@ -59,6 +61,7 @@ app.post('/addData', (req,res)=>{
   }
 })
 
+//update product form
 app.post('/updateData',(req,res)=>{
   var query=req.body;
   console.log(query);
@@ -87,7 +90,7 @@ app.post('/updateData',(req,res)=>{
   });
      
 })
-
+//delete product form
 app.post('/deleteData',(req,res)=>{
   var query=req.body;
   console.log(query);
@@ -104,6 +107,7 @@ app.post('/deleteData',(req,res)=>{
 }) 
 });
 
+//delete particular product - button
 app.get('/deletepartProduct',(req,res)=>{
   var a = parseInt(req.query.id);
   col.find({pid:a}).toArray((err,arr)=>{
@@ -113,10 +117,12 @@ app.get('/deletepartProduct',(req,res)=>{
   })
 })
 
+//edit particular product - button
 app.get('/editpartProduct',(req,res)=>{
   res.render('edit_part_product.ejs',{num:req.query.id});
 })
 
+//edit particular product - form
 app.post('/editpartData',(req,res)=>{
   var a = parseInt(req.query.id);
   var query = req.body;
