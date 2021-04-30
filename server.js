@@ -41,7 +41,7 @@ app.get('/deleteProduct',(req,res)=>{
 //Add product form
 app.post('/addData', (req,res)=>{
   var query=req.body
-  if(query.pid!=""){
+  if(query.pid!="" && query.pname!="" && query.quantity!="" && query.method!="" && query.price!="" && query.category!=""){
     console.log(query);
     col.insertOne({
                   pid:parseInt(query.pid),
@@ -110,12 +110,10 @@ app.post('/deleteData',(req,res)=>{
 //delete particular product - button
 app.get('/deletepartProduct',(req,res)=>{
   var a = parseInt(req.query.id);
-  col.find({pid:a}).toArray((err,arr)=>{
-    console.log(arr);
-    if(arr.length!==0) col.deleteOne({pid:a});
+    col.deleteOne({pid:a});
     res.redirect('/');
   })
-})
+
 
 //edit particular product - button
 app.get('/editpartProduct',(req,res)=>{
